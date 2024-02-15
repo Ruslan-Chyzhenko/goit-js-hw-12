@@ -117,3 +117,28 @@ body::before {
       100px 0 white;
   }
 }
+
+.load-more {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 125px;
+  height: 40px;
+  padding: 0;
+  margin-bottom: 30px;
+  margin-top: 32px;
+  display: flex;
+}
+
+.load-more:hover {
+  background-color: #0056b3;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

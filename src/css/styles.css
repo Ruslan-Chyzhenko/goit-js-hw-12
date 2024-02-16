@@ -118,7 +118,7 @@ body::before {
   }
 }
 
-.load-more {
+.load-more-btn {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -131,9 +131,11 @@ body::before {
   margin-bottom: 30px;
   margin-top: 32px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.load-more:hover {
+.load-more-btn:hover {
   background-color: #0056b3;
 }
 

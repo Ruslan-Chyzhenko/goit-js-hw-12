@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 12</title>
-    <link href="./css/styles.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
-      rel="stylesheet" />
-    
-  </head>
-  <body>
-    <form action="#" method="get" class="search-form">
-      <input type="text" id="query" class="image-query" placeholder="Search images..."/>
-      <button type="submit" class="search-button">Search</button>
-      <span class="loader hidden"></span>
-    </form>
-          
-    <div id="gallery" class="gallery">        
-    </div>
-    
-    <div class="btn-box"><button class="load-more">Load more</button>
-    </div>
-    
-    <script type="module" src="./main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework 12</title>
+  <link href="./css/styles.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+</head>
+
+<body>
+  <form action="#" method="get" class="search-form">
+    <input type="text" id="query" class="image-query" placeholder="Search images..." />
+    <button type="submit" class="search-button">Search</button>
+    <span class="loader hidden"></span>
+  </form>
+
+  <div id="gallery" class="gallery">
+  </div>
+
+  <div class="btn-box"><button class="load-more-btn hidden">Load more</button>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>

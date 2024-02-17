@@ -1,63 +1,50 @@
-// render-functions
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+import { refs } from "../main";
 
-export function displayImages(images, gallery, lightbox) {
-    gallery.innerHTML = '';
+let galleryA;
 
-    const imageCards = images.map(image => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-
-        card.innerHTML = `
-            <a href="${image.largeImageURL}">
-                <img src="${image.webformatURL}" alt="${image.tags}" title="${image.tags}">
-            </a>
-            <div class="overlay">
-                <div class="details">
-                    <p>Likes: ${image.likes}</p>
-                    <p>Views: ${image.views}</p>
-                    <p>Comments: ${image.comments}</p>
-                    <p>Downloads: ${image.downloads}</p>
-                </div>
-            </div>
-        `;
-
-        return card;
-    });
-
-    imageCards.forEach(card => {
-        gallery.appendChild(card);
-    });
-
-    lightbox.refresh();
+function galleryTemplate({
+    largeImageURL,
+    webformatURL,
+    tags,
+    likes,
+    views,
+    comments,
+    downloads,
+}) {
+    return `<li class="gallery-item">
+        <a class="gallery-link" href="${largeImageURL}">
+            <img class="gallery-image" src="${webformatURL}" alt="${tags}" />
+        </a>
+        <div class="info-box">
+            <p>Likes:<span> ${likes}</span></p>
+            <p>Views:<span> ${views}</span></p>
+            <p>Comments:<span> ${comments}</span></p>
+            <p>Downloads:<span> ${downloads}</span> </p>
+        </div>
+    </li>`;
 }
 
-export function toastError(message) {
-    iziToast.error({
-        title: 'Error',
-        message: message,
-        backgroundColor: '#EF4040',
-        progressBarColor: '#FFE0AC',
-        icon: 'icon-close',
-        position: 'topRight',
-        displayMode: 'replace',
-        closeOnEscape: true,
-        pauseOnHover: false,
-        maxWidth: 432,
-        messageSize: '16px',
-        messageLineHeight: '24px',
+export function renderGalleryItem(images) {
+    const markup = images.map(galleryTemplate).join('');
+    refs.gallery.insertAdjacentHTML("beforeend", markup);
+   
+    if (!galleryA) {
+        initializeSimpleLightbox();
+    } else {
+        refreshSimpleLightbox();
+    }
+}
+
+function initializeSimpleLightbox() {
+    galleryA = new SimpleLightbox('.gallery a', {
+        captionDelay: 250,
+        captionsData: 'alt',
+        captionPosition: 'bottom',
     });
 }
 
-export function showLoader(loader) {
-    loader.classList.remove('hidden');
-}
-
-export function hideLoader(loader) {
-    loader.classList.add('hidden');
-}
-
-export function resetForm(form) {
-    form.reset();
+function refreshSimpleLightbox() {
+    galleryA.refresh();
 }

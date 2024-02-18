@@ -21,7 +21,7 @@ refs.btnLoad.addEventListener("click", handleLoadMoreClick);
 
 async function handleSubmit(event) { 
     event.preventDefault();
-    pageOf = 1; // Reset page number on each submit
+    pageOf = 1;
     createLoader();
     const query = event.target.elements.query.value;
     searchQuery = query.trim();

@@ -21,6 +21,7 @@ refs.btnLoad.addEventListener("click", handleLoadMoreClick);
 
 async function handleSubmit(event) { 
     event.preventDefault();
+    pageOf = 1; // Reset page number on each submit
     createLoader();
     const query = event.target.elements.query.value;
     searchQuery = query.trim();
@@ -46,6 +47,11 @@ async function handleSubmit(event) {
         SearchResults(data.totalHits, pageOf);
     } catch (error) {
         console.error('Error data:', error);
+        if (error.message.includes('network')) {
+            showNotification('Please check your internet connection');
+        } else {
+            showNotification('An error occurred. Please try again later.');
+        }
     } finally {
         createLoader();
         event.target.reset();
@@ -103,4 +109,4 @@ function SearchResults(totalHits, pageOf) {
         hideLoadMoreBtn();
         showNotification("We're sorry, but you've reached the end of search results.");
     }
-}
+} 
